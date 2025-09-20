@@ -78,15 +78,15 @@ export default function Home() {
               </p>
               <div className="mt-6 grid gap-4 text-sm text-haze">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-lavend" />
+                  <span className="h-2 w-2 rounded-full bg-lavender" />
                   Research sprints, brand tune-ups, motion guidelines
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-lavend" />
+                  <span className="h-2 w-2 rounded-full bg-lavender" />
                   Prototype rigs, developer handoff, performance audits
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-lavend" />
+                  <span className="h-2 w-2 rounded-full bg-lavender" />
                   Embedded collaborations from seed to scale
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function Home() {
             {caseStudies.map((project, index) => (
               <motion.article
                 key={project.name}
-                className="group grid gap-4 rounded-[32px] border border-hairline/70 bg-ink/50 p-6 transition-colors duration-150 hover:border-lavend"
+                className="group grid gap-4 rounded-[32px] border border-hairline/70 bg-ink/50 p-6 transition-colors duration-150 hover:border-lavender"
                 variants={cards}
                 initial="hidden"
                 whileInView="visible"
@@ -141,8 +141,8 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed text-haze group-hover:text-foam">{project.description}</p>
-                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-lavend">
-                  <span className="h-px w-8 bg-lavend/70" />
+                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-lavender">
+                  <span className="h-px w-8 bg-lavender/70" />
                   Inquire for release notes
                 </div>
               </motion.article>

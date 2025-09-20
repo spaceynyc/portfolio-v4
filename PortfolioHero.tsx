@@ -175,10 +175,10 @@ export function PortfolioHero() {
           </motion.p>
           <motion.div className="flex flex-wrap items-center gap-3 text-sm text-haze" variants={identityItemVariants}>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-foam">
-              <span className="h-2 w-2 rounded-full bg-lavend" />
+              <span className="h-2 w-2 rounded-full bg-lavender" />
               Portland, OR
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-lavend/40 bg-lavend/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-lavend">
+            <span className="inline-flex items-center gap-2 rounded-full border border-lavender/40 bg-lavender/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-lavender">
               Open for Q3 collaborations
             </span>
           </motion.div>
@@ -186,16 +186,16 @@ export function PortfolioHero() {
             <a
               href="#work"
               aria-label="View selected work"
-              className="inline-flex items-center justify-center rounded-full bg-lavend px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink transition-colors duration-200 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="inline-flex items-center justify-center rounded-full bg-lavender px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink transition-colors duration-200 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               View Work
             </a>
             <a
               href="/resume.pdf"
-              aria-label="Download Rowan Sato résumé"
+              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-foam transition-colors duration-200 hover:border-lavender hover:text-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-foam transition-colors duration-200 hover:border-lavend hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
-              Download Résumé
+              Download RÃ©sumÃ©
             </a>
           </motion.div>
         </motion.div>

@@ -153,12 +153,12 @@ export default function App() {
           <div className="flex flex-col gap-4 rounded-[28px] border border-hairline/70 bg-ink/60 px-6 py-6 backdrop-blur sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-haze">&copy; {new Date().getFullYear()} AetherLab. All composites original.</p>
             <div className="flex flex-wrap items-center gap-4 text-sm uppercase tracking-[0.24em] text-haze">
-              <Link to="/about" className="transition-colors duration-150 hover:text-lavend" data-cursor="hover">
+              <Link to="/about" className="transition-colors duration-150 hover:text-lavender" data-cursor="hover">
                 About
               </Link>
               <button
                 type="button"
-                className="text-left transition-colors duration-150 hover:text-lavend"
+                className="text-left transition-colors duration-150 hover:text-lavender"
                 data-cursor="hover"
                 onClick={openContact}
               >

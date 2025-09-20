@@ -113,7 +113,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
               aria-modal="true"
               aria-label="Site navigation"
               style={{ ...maskStyle, ...backgroundStyle }}
-              className="relative flex h-full w-full items-center justify-center bg-lavend text-ink"
+              className="relative flex h-full w-full items-center justify-center bg-lavender text-ink"
               variants={panelVariants}
               initial="closed"
               animate="open"
@@ -124,7 +124,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
                 type="button"
                 data-cursor="hover"
                 onClick={onClose}
-                className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-xs font-medium uppercase tracking-[0.24em] text-ink transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavend"
+                className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-xs font-medium uppercase tracking-[0.24em] text-ink transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender"
                 whileHover={{ backgroundColor: "rgba(11, 11, 11, 0.08)" }}
                 whileTap={{ scale: 0.94 }}
               >
@@ -150,7 +150,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
                           }}
                           type="button"
                           data-cursor="hover"
-                          className="font-display text-5xl font-semibold tracking-tight text-ink transition-colors duration-150 hover:text-lavend-deep focus-visible:text-lavend-deep sm:text-6xl"
+                          className="font-display text-5xl font-semibold tracking-tight text-ink transition-colors duration-150 hover:text-lavender-deep focus-visible:text-lavender-deep sm:text-6xl"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.97 }}
                           onClick={() => {
