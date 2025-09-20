@@ -15,7 +15,7 @@ export type LayoutContext = {
   activeSection: string | null;
 };
 
-type NavTarget = "work" | "resume" | "about" | "contact";
+type NavTarget = "home" | "work" | "resume" | "about" | "contact";
 
 export default function App() {
   const navigate = useNavigate();
@@ -110,6 +110,9 @@ export default function App() {
   const handleNavigate = useCallback(
     (target: NavTarget) => {
       switch (target) {
+        case "home":
+          navigate("/");
+          break;
         case "work":
           navigate("/work");
           break;
