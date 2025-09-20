@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import type { LayoutContext } from "../App";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const projects = [
   {
@@ -35,7 +36,11 @@ const listVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.05, duration: 0.26, ease: [0.4, 0, 0.2, 1] },
+    transition: {
+      delay: i * 0.05,
+      duration: MotionDurations.duration240,
+      ease: MotionEasings.calm,
+    },
   }),
 };
 

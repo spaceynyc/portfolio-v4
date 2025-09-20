@@ -1,5 +1,6 @@
 ﻿import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 type CursorVariant = "default" | "hover" | "drag" | "hidden" | "reduced";
 
@@ -132,7 +133,7 @@ export function CustomCursor() {
           backgroundColor: "rgba(245,245,247,0.1)",
         },
       }}
-      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+      transition={{ duration: MotionDurations.transitionIn, ease: MotionEasings.calm }}
     >
       <div className="flex h-full w-full items-center justify-center">
         {!prefersReducedMotion && activeVariant === "hover" ? (

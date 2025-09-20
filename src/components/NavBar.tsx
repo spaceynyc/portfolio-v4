@@ -1,6 +1,7 @@
 ﻿import { LayoutGroup, motion } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { MouseEvent } from "react";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const NAV_LINKS = [
   { id: "work" as const, label: "Work" },
@@ -132,7 +133,7 @@ export function NavBar({
       className="pointer-events-none fixed left-0 right-0 top-0 z-40 flex justify-center"
       initial={false}
       animate={{ y: hidden ? "-110%" : 0 }}
-      transition={{ duration: 0.24, ease: [0.33, 1, 0.68, 1] }}
+      transition={{ duration: MotionDurations.transitionOut, ease: MotionEasings.tOut }}
     >
       <nav
         aria-label="Primary"
