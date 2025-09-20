@@ -2,6 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useCharCount } from "../hooks/useCharCount";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const EMAIL_PATTERN = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 const MESSAGE_LIMIT = 500;
@@ -81,7 +82,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
             className="fixed inset-0 z-30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.15 } }}
+            exit={{ opacity: 0, transition: { duration: MotionDurations.duration160 } }}
           >
             <motion.div
               role="presentation"
@@ -89,7 +90,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
               onClick={onClose}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              exit={{ opacity: 0, transition: { duration: MotionDurations.duration160 } }}
             />
             <motion.div
               ref={sheetRef}
@@ -99,8 +100,8 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
               className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-3xl rounded-t-[32px] border border-hairline border-b-0 bg-ink/96 backdrop-blur-lg"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
-              exit={{ y: "100%", transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] } }}
-              transition={{ duration: 0.24, ease: [0.33, 1, 0.68, 1] }}
+              exit={{ y: "100%", transition: { duration: MotionDurations.transitionIn, ease: MotionEasings.tIn } }}
+              transition={{ duration: MotionDurations.transitionOut, ease: MotionEasings.tOut }}
             >
               <div className="flex flex-col gap-6 px-6 pb-10 pt-8 sm:px-10">
                 <div className="flex items-start justify-between gap-4">
@@ -163,8 +164,11 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                         key="sent"
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6, transition: { duration: 0.12 } }}
-                        className="rounded-full border border-lavender/50 bg-lavender/10 px-4 py-2 text-center text-xs text-lavender"
+                   <motion.div
+  exit={{ opacity: 0, y: -6, transition: { duration: MotionDurations.duration120 } }}
+  className="rounded-full border border-lavender/50 bg-lavender/10 px-4 py-2 text-center text-xs text-lavender"
+>
+
                       >
                         Sent (stub)
                       </motion.div>

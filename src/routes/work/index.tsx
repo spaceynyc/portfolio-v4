@@ -1,5 +1,6 @@
 ﻿import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import { LayoutGroup, motion, useInView } from "framer-motion";
+import { MotionDurations, MotionEasings } from "../../styles/motion";
 
 type WorkCategory = "product-ui" | "motion-systems" | "prototyping";
 
@@ -135,7 +136,7 @@ const projects: WorkProject[] = [
   },
 ];
 
-const easing = [0.4, 0, 0.2, 1];
+const easing = MotionEasings.calm;
 const MAX_TILT = 6;
 
 export default function WorkCollection() {
@@ -191,7 +192,7 @@ export default function WorkCollection() {
             layout
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.32, ease: easing, delay: index * 0.04 }}
+            transition={{ duration: MotionDurations.duration320, ease: easing, delay: index * 0.04 }}
             className="h-full"
           >
             <WorkCard project={project} />
