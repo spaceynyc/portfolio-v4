@@ -167,13 +167,13 @@ export default function WorkCollection() {
                 key={filter.value}
                 type="button"
                 onClick={() => setActiveFilter(filter)}
-                className="relative overflow-hidden rounded-full border border-hairline/50 bg-ink/40 px-5 py-2 text-sm font-medium text-haze transition-all duration-200 hover:text-foam focus:outline-none focus-visible:ring-2 focus-visible:ring-lavend/60"
+                className="relative overflow-hidden rounded-full border border-hairline/50 bg-ink/40 px-5 py-2 text-sm font-medium text-haze transition-all duration-200 hover:text-foam focus:outline-none focus-visible:ring-2 focus-visible:ring-lavender/60"
                 data-cursor="hover"
               >
                 {isActive && (
                   <motion.span
                     layoutId="filter-pill"
-                    className="absolute inset-0 rounded-full bg-lavend/20"
+                    className="absolute inset-0 rounded-full bg-lavender/20"
                     transition={{ type: "spring", stiffness: 260, damping: 30 }}
                   />
                 )}
@@ -294,7 +294,7 @@ function WorkCard({ project }: { project: WorkProject }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-hairline/40 bg-ink/50 px-3 py-1 text-xs uppercase tracking-[0.28em] text-lavend"
+                className="rounded-full border border-hairline/40 bg-ink/50 px-3 py-1 text-xs uppercase tracking-[0.28em] text-lavender"
               >
                 {tag}
               </span>

@@ -61,8 +61,8 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
   };
 
   const hintTone = useMemo(() => {
-    if (error) return "text-lavend-deep";
-    if (remaining < 50) return "text-lavend-deep";
+    if (error) return "text-lavender-deep";
+    if (remaining < 50) return "text-lavender-deep";
     return "text-haze";
   }, [error, remaining]);
 
@@ -128,7 +128,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       required
-                      className="rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavend focus:outline-none focus:ring-2 focus:ring-lavend/40"
+                      className="rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavender focus:outline-none focus:ring-2 focus:ring-lavender/40"
                     />
                   </label>
                   <label className="flex flex-col gap-2 text-sm text-haze">
@@ -139,7 +139,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                       onChange={(event) => setMessage(event.target.value)}
                       maxLength={MESSAGE_LIMIT}
                       rows={5}
-                      className="scroll-area rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavend focus:outline-none focus:ring-2 focus:ring-lavend/40"
+                      className="scroll-area rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavender focus:outline-none focus:ring-2 focus:ring-lavender/40"
                     />
                   </label>
                   <div className="flex items-center justify-between text-xs">
@@ -151,7 +151,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                   <motion.button
                     type="submit"
                     data-cursor="hover"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-lavend px-6 py-3 font-display text-sm uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-lavender px-6 py-3 font-display text-sm uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -164,7 +164,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -6, transition: { duration: 0.12 } }}
-                        className="rounded-full border border-lavend/50 bg-lavend/10 px-4 py-2 text-center text-xs text-lavend"
+                        className="rounded-full border border-lavender/50 bg-lavender/10 px-4 py-2 text-center text-xs text-lavender"
                       >
                         Sent (stub)
                       </motion.div>

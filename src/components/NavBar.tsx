@@ -114,7 +114,7 @@ export function NavBar({
         <a
           href={HREF_MAP[linkId]}
           data-cursor="hover"
-          className="relative z-10 inline-flex items-center justify-center px-4 py-2 text-sm font-medium uppercase tracking-[0.28em] text-foam transition-colors duration-150 hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+          className="relative z-10 inline-flex items-center justify-center px-4 py-2 text-sm font-medium uppercase tracking-[0.28em] text-foam transition-colors duration-150 hover:text-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           onMouseEnter={() => setHovered(linkId)}
           onMouseLeave={() => setHovered(null)}
           onFocus={() => setHovered(linkId)}
@@ -146,7 +146,7 @@ export function NavBar({
         <div className="flex items-center justify-center">
           <button
             type="button"
-            className="lg:hidden flex h-10 w-10 items-center justify-center rounded-full border border-hairline/30 text-foam transition-colors duration-150 hover:border-lavend hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="lg:hidden flex h-10 w-10 items-center justify-center rounded-full border border-hairline/30 text-foam transition-colors duration-150 hover:border-lavender hover:text-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             aria-label="Open navigation menu"
             data-cursor="hover"
             onClick={(event) => onToggleMenu(event)}
@@ -168,7 +168,7 @@ export function NavBar({
             type="button"
             data-cursor="hover"
             onClick={onStartProject}
-            className="inline-flex whitespace-nowrap rounded-full bg-lavend px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-ink transition-transform transition-colors duration-150 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="inline-flex whitespace-nowrap rounded-full bg-lavender px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-ink transition-transform transition-colors duration-150 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             Hire Me
           </button>
@@ -178,7 +178,7 @@ export function NavBar({
             onClick={onToggleMenu}
             aria-expanded={menuOpen}
             aria-controls="main-menu-overlay"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-foam transition-colors duration-150 hover:border-lavend hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-hairline text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-foam transition-colors duration-150 hover:border-lavender hover:text-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender/50 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             whileTap={{ scale: 0.94 }}
           >
             Menu

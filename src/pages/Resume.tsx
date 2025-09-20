@@ -75,7 +75,7 @@ export default function Resume() {
           <button
             type="button"
             onClick={openContact}
-            className="rounded-full bg-lavend px-5 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-ink transition-colors duration-150 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="rounded-full bg-lavender px-5 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-ink transition-colors duration-150 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             Hire Me
           </button>
@@ -104,7 +104,7 @@ export default function Resume() {
             <ul className="mt-4 flex flex-col gap-3 text-sm leading-relaxed text-haze">
               {item.bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-2">
-                  <span aria-hidden="true" className="mt-1 block h-1 w-1 rounded-full bg-lavend" />
+                  <span aria-hidden="true" className="mt-1 block h-1 w-1 rounded-full bg-lavender" />
                   <span>{bullet}</span>
                 </li>
               ))}
@@ -126,7 +126,7 @@ export default function Resume() {
           <ul className="mt-4 grid gap-3 text-sm text-haze">
             {skills.map((skill) => (
               <li key={skill} className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-lavend" />
+                <span className="h-2 w-2 rounded-full bg-lavender" />
                 {skill}
               </li>
             ))}
@@ -142,9 +142,9 @@ export default function Resume() {
           custom={experience.length + 2}
         >
           <h3 className="font-display text-xl text-foam">Tools in regular rotation</h3>
-          <ul className="mt-4 flex flex-wrap gap-3 text-xs uppercase tracking-[0.24em] text-lavend">
+          <ul className="mt-4 flex flex-wrap gap-3 text-xs uppercase tracking-[0.24em] text-lavender">
             {tools.map((tool) => (
-              <li key={tool} className="rounded-full border border-lavend/40 px-3 py-1">
+              <li key={tool} className="rounded-full border border-lavender/40 px-3 py-1">
                 {tool}
               </li>
             ))}
