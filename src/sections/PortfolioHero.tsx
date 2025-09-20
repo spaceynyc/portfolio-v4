@@ -188,7 +188,7 @@ export function PortfolioHero() {
               View Work
             </a>
             <a
-              href="/resume.pdf"
+              href="/resume"
               aria-label="Download Rowan Sato resume"
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-foam transition-colors duration-200 hover:border-lavend hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
