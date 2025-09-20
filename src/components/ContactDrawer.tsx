@@ -164,11 +164,12 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                         key="sent"
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                   <motion.div
-  exit={{ opacity: 0, y: -6, transition: { duration: MotionDurations.duration120 } }}
-  className="rounded-full border border-lavender/50 bg-lavender/10 px-4 py-2 text-center text-xs text-lavender"
->
-
+                        exit={{
+                          opacity: 0,
+                          y: -6,
+                          transition: { duration: MotionDurations.duration120 },
+                        }}
+                        className="rounded-full border border-lavender/50 bg-lavender/10 px-4 py-2 text-center text-xs text-lavender"
                       >
                         Sent (stub)
                       </motion.div>
