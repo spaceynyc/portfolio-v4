@@ -3,13 +3,18 @@ import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import type { LayoutContext } from "../App";
 import { PortfolioHero } from "../sections/PortfolioHero";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const cards = {
   hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.24, ease: [0.4, 0, 0.2, 1], delay: i * 0.06 },
+    transition: {
+      duration: MotionDurations.duration240,
+      ease: MotionEasings.calm,
+      delay: i * 0.06,
+    },
   }),
 };
 
@@ -65,7 +70,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: MotionDurations.duration240, ease: MotionEasings.calm }}
             >
               <h2 className="font-display text-2xl text-foam sm:text-3xl">How we modulate momentum</h2>
               <p className="mt-4 text-base leading-relaxed text-haze">
@@ -113,7 +118,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: MotionDurations.duration240, ease: MotionEasings.calm }}
           >
             <p className="font-display text-sm uppercase tracking-[0.3em] text-haze">Case signals</p>
             <h2 className="font-display text-3xl text-foam sm:text-4xl">Selected investigations</h2>

@@ -8,10 +8,12 @@ import {
 import { useCallback, useMemo } from "react";
 import type { MouseEvent } from "react";
 import type { MotionValue } from "framer-motion";
+import { MotionDurations, MotionEasings, sumDurations } from "../styles/motion";
 
-const CALM_EASE = [0.32, 0.16, 0.16, 1] as const;
 const PARALLAX_LIMIT = 10;
 const SPRING_CONFIG = { stiffness: 180, damping: 26, mass: 0.8 };
+const CALM_STACK_DURATION = sumDurations(MotionDurations.duration320, MotionDurations.duration240);
+const EXTENDED_OUT_DURATION = sumDurations(MotionDurations.duration240, MotionDurations.duration240);
 
 const CAPABILITIES = [
   "Motion Systems",
@@ -30,8 +32,8 @@ const capabilityTileVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.52,
-      ease: CALM_EASE,
+      duration: CALM_STACK_DURATION,
+      ease: MotionEasings.calm,
       delay: index * 0.06,
     },
   }),
@@ -78,8 +80,8 @@ export function PortfolioHero() {
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.32 : 0.54,
-          ease: CALM_EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration320 : CALM_STACK_DURATION,
+          ease: MotionEasings.calm,
           when: "beforeChildren",
           staggerChildren: prefersReducedMotion ? 0 : 0.08,
         },
@@ -95,8 +97,8 @@ export function PortfolioHero() {
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.28 : 0.48,
-          ease: CALM_EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration320 : EXTENDED_OUT_DURATION,
+          ease: MotionEasings.calm,
         },
       },
     }),
@@ -110,8 +112,8 @@ export function PortfolioHero() {
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.28 : 0.56,
-          ease: CALM_EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration320 : CALM_STACK_DURATION,
+          ease: MotionEasings.calm,
         },
       },
     }),

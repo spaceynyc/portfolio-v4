@@ -13,6 +13,7 @@ import {
   useMemo,
   type MouseEvent as ReactMouseEvent,
 } from "react";
+import { MotionDurations, MotionEasings, sumDurations } from "../styles/motion";
 
 type Cta = {
   label: string;
@@ -38,10 +39,10 @@ export type HeroSectionProps = {
   id?: string;
 };
 
-const EASE = [0.4, 0, 0.2, 1] as const;
 const TILE_DEPTH_PATTERN = [1, -0.7, 0.55, -0.4];
 const MAX_OFFSET = 14;
 const SPRING_CONFIG = { stiffness: 140, damping: 22, mass: 0.6 };
+const STACKED_DURATION = sumDurations(MotionDurations.duration240, MotionDurations.duration160);
 
 type HeroTileProps = {
   tile: Tile;
@@ -109,8 +110,8 @@ export default function HeroSection({
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.18 : 0.32,
-          ease: EASE,
+          duration: prefersReducedMotion ? MotionDurations.transitionIn : MotionDurations.duration320,
+          ease: MotionEasings.calm,
           when: "beforeChildren",
           staggerChildren: prefersReducedMotion ? 0 : 0.08,
         },
@@ -125,7 +126,10 @@ export default function HeroSection({
       show: {
         opacity: 1,
         y: 0,
-        transition: { duration: prefersReducedMotion ? 0.2 : 0.3, ease: EASE },
+        transition: {
+          duration: prefersReducedMotion ? MotionDurations.transitionIn : MotionDurations.duration320,
+          ease: MotionEasings.calm,
+        },
       },
     }),
     [prefersReducedMotion],
@@ -138,8 +142,8 @@ export default function HeroSection({
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.2 : 0.32,
-          ease: EASE,
+          duration: prefersReducedMotion ? MotionDurations.transitionIn : MotionDurations.duration320,
+          ease: MotionEasings.calm,
           staggerChildren: prefersReducedMotion ? 0 : 0.08,
         },
       },
@@ -153,7 +157,10 @@ export default function HeroSection({
       show: {
         opacity: 1,
         y: 0,
-        transition: { duration: prefersReducedMotion ? 0.2 : 0.28, ease: EASE },
+        transition: {
+          duration: prefersReducedMotion ? MotionDurations.transitionIn : MotionDurations.duration320,
+          ease: MotionEasings.calm,
+        },
       },
     }),
     [prefersReducedMotion],
@@ -166,8 +173,8 @@ export default function HeroSection({
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.24 : 0.36,
-          ease: EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration240 : STACKED_DURATION,
+          ease: MotionEasings.calm,
           staggerChildren: prefersReducedMotion ? 0 : 0.08,
         },
       },
@@ -182,8 +189,8 @@ export default function HeroSection({
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.22 : 0.38,
-          ease: EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration240 : MotionDurations.duration400,
+          ease: MotionEasings.calm,
           delay: prefersReducedMotion ? 0 : index * 0.05,
         },
       }),
