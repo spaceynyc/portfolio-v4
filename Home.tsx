@@ -49,7 +49,8 @@ const caseStudies = [
 
 export default function Home() {
   const { setActiveSection } = useOutletContext<LayoutContext>();
-  const activeId = useScrollSpy(["work", "approach", "lab"]);
+  // TODO: Reintroduce the "work" section ID here when the section is implemented.
+  const activeId = useScrollSpy(["approach", "lab"]);
 
   useEffect(() => {
     setActiveSection(activeId);
