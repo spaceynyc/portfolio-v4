@@ -188,19 +188,19 @@ export default function ResumeRoute() {
             <button
               type="button"
               onClick={handleExport}
-              className="rounded-full bg-lavend px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-ink transition-colors duration-150 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink print:hidden"
+              className="rounded-full bg-lavender px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-ink transition-colors duration-150 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink print:hidden"
             >
               Download PDF
             </button>
             <a
               href="mailto:hello@aetherlab.studio"
-              className="rounded-full border border-hairline/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-haze transition-colors duration-150 hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink print:text-black print:border-black"
+              className="rounded-full border border-hairline/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-haze transition-colors duration-150 hover:text-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink print:text-black print:border-black"
             >
               Email
             </a>
             <a
               href="https://cal.com/aetherlab/intro"
-              className="rounded-full border border-hairline/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-haze transition-colors duration-150 hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink print:text-black print:border-black"
+              className="rounded-full border border-hairline/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-haze transition-colors duration-150 hover:text-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink print:text-black print:border-black"
             >
               Book intro call
             </a>
@@ -228,7 +228,7 @@ export default function ResumeRoute() {
             <ul className="mt-4 flex flex-col gap-3 text-sm text-haze print:text-black">
               {strengths.map((strength) => (
                 <li key={strength} className="flex items-start gap-3">
-                  <span aria-hidden="true" className="mt-[0.45rem] h-1.5 w-1.5 rounded-full bg-lavend print:bg-black" />
+                  <span aria-hidden="true" className="mt-[0.45rem] h-1.5 w-1.5 rounded-full bg-lavender print:bg-black" />
                   <span>{strength}</span>
                 </li>
               ))}
@@ -243,7 +243,7 @@ export default function ResumeRoute() {
                   <p className="text-xs uppercase tracking-[0.28em] text-haze/70 print:text-black">{group.label}</p>
                   <ul className="mt-2 flex flex-wrap gap-2 text-sm text-haze print:text-black">
                     {group.items.map((item) => (
-                      <li key={item} className="rounded-full border border-hairline/50 bg-ink/50 px-3 py-1 text-xs uppercase tracking-[0.22em] text-lavend print:bg-transparent print:text-black print:border-black">
+                      <li key={item} className="rounded-full border border-hairline/50 bg-ink/50 px-3 py-1 text-xs uppercase tracking-[0.22em] text-lavender print:bg-transparent print:text-black print:border-black">
                         {item}
                       </li>
                     ))}
@@ -281,11 +281,11 @@ export default function ResumeRoute() {
           <ol className="resume-timeline mt-6 flex flex-col gap-6">
             {experienceTimeline.map((entry, index) => (
               <li key={`${entry.company}-${entry.start}`} className="relative pl-10">
-                <span className="resume-timeline-marker absolute left-1 top-3 h-full w-px bg-gradient-to-b from-lavend via-lavend/20 to-transparent print:hidden" aria-hidden="true" />
-                <span className="absolute left-0 top-3 flex h-3 w-3 items-center justify-center rounded-full border-2 border-ink bg-lavend print:hidden" aria-hidden="true">
+                <span className="resume-timeline-marker absolute left-1 top-3 h-full w-px bg-gradient-to-b from-lavender via-lavender/20 to-transparent print:hidden" aria-hidden="true" />
+                <span className="absolute left-0 top-3 flex h-3 w-3 items-center justify-center rounded-full border-2 border-ink bg-lavender print:hidden" aria-hidden="true">
                   <span className="h-1.5 w-1.5 rounded-full bg-ink" />
                 </span>
-                <article className="rounded-2xl border border-hairline/50 bg-ink/50 p-5 transition-colors duration-200 hover:border-lavend/60 print:bg-transparent print:border-0">
+                <article className="rounded-2xl border border-hairline/50 bg-ink/50 p-5 transition-colors duration-200 hover:border-lavender/60 print:bg-transparent print:border-0">
                   <details className="group" open={index === 0}>
                     <summary className="list-none cursor-pointer">
                       <div className="flex flex-col gap-4">
@@ -306,8 +306,8 @@ export default function ResumeRoute() {
                           </div>
                         </div>
                         <p className="max-w-2xl text-sm leading-relaxed text-haze print:text-black">{entry.mandate}</p>
-                        <div className="flex items-center gap-2 pt-2 text-xs uppercase tracking-[0.28em] text-haze/60 transition-colors duration-150 group-open:text-lavend print:hidden">
-                          <span className="flex h-5 w-5 items-center justify-center rounded-full border border-hairline/40 text-lavend">
+                        <div className="flex items-center gap-2 pt-2 text-xs uppercase tracking-[0.28em] text-haze/60 transition-colors duration-150 group-open:text-lavender print:hidden">
+                          <span className="flex h-5 w-5 items-center justify-center rounded-full border border-hairline/40 text-lavender">
                             <span className="group-open:hidden">+</span>
                             <span className="hidden group-open:inline">-</span>
                           </span>
@@ -321,7 +321,7 @@ export default function ResumeRoute() {
                       <ul className="mt-3 flex flex-col gap-3 leading-relaxed">
                         {entry.achievements.map((achievement) => (
                           <li key={achievement} className="flex gap-3">
-                            <span aria-hidden="true" className="mt-[0.45rem] h-1.5 w-1.5 rounded-full bg-lavend print:bg-black" />
+                            <span aria-hidden="true" className="mt-[0.45rem] h-1.5 w-1.5 rounded-full bg-lavender print:bg-black" />
                             <span>{achievement}</span>
                           </li>
                         ))}

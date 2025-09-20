@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useOutletContext } from "react-router-dom";
 import type { LayoutContext } from "../App";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 export default function About() {
   const { openContact } = useOutletContext<LayoutContext>();
@@ -11,7 +12,7 @@ export default function About() {
         className="font-display text-4xl text-foam sm:text-5xl"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
+        transition={{ duration: MotionDurations.duration240, ease: MotionEasings.calm }}
       >
         About AetherLab
       </motion.h1>
@@ -19,7 +20,7 @@ export default function About() {
         className="max-w-3xl text-lg leading-relaxed text-haze"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1], delay: 0.08 }}
+        transition={{ duration: MotionDurations.duration240, ease: MotionEasings.calm, delay: 0.08 }}
       >
         We are a compact team of interaction designers, prototypers, and technical artists applying research-led motion thinking to digital products. Our practice lives where product detail meets brand atmosphere&mdash;where invisible systems require a visual voice.
       </motion.p>
@@ -27,7 +28,7 @@ export default function About() {
         className="grid gap-6 text-sm text-haze"
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1], delay: 0.14 }}
+        transition={{ duration: MotionDurations.duration240, ease: MotionEasings.calm, delay: 0.14 }}
       >
         <div className="rounded-3xl border border-hairline/60 bg-ink/50 p-6">
           <h2 className="font-display text-xl text-foam">Lab principles</h2>
@@ -47,7 +48,7 @@ export default function About() {
             type="button"
             data-cursor="hover"
             onClick={openContact}
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-lavend px-5 py-3 font-display text-xs uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavend-deep hover:text-foam"
+            className="mt-4 inline-flex items-center justify-center rounded-full bg-lavender px-5 py-3 font-display text-xs uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavender-deep hover:text-foam"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >

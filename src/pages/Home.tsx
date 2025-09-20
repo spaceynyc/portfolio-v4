@@ -3,13 +3,18 @@ import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import type { LayoutContext } from "../App";
 import { PortfolioHero } from "../sections/PortfolioHero";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const cards = {
   hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.24, ease: [0.4, 0, 0.2, 1], delay: i * 0.06 },
+    transition: {
+      duration: MotionDurations.duration240,
+      ease: MotionEasings.calm,
+      delay: i * 0.06,
+    },
   }),
 };
 
@@ -65,7 +70,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ duration: MotionDurations.duration240, ease: MotionEasings.calm }}
             >
               <h2 className="font-display text-2xl text-foam sm:text-3xl">How we modulate momentum</h2>
               <p className="mt-4 text-base leading-relaxed text-haze">
@@ -73,15 +78,15 @@ export default function Home() {
               </p>
               <div className="mt-6 grid gap-4 text-sm text-haze">
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-lavend" />
+                  <span className="h-2 w-2 rounded-full bg-lavender" />
                   Research sprints, brand tune-ups, motion guidelines
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-lavend" />
+                  <span className="h-2 w-2 rounded-full bg-lavender" />
                   Prototype rigs, developer handoff, performance audits
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-lavend" />
+                  <span className="h-2 w-2 rounded-full bg-lavender" />
                   Embedded collaborations from seed to scale
                 </div>
               </div>
@@ -113,7 +118,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.24, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: MotionDurations.duration240, ease: MotionEasings.calm }}
           >
             <p className="font-display text-sm uppercase tracking-[0.3em] text-haze">Case signals</p>
             <h2 className="font-display text-3xl text-foam sm:text-4xl">Selected investigations</h2>
@@ -122,7 +127,7 @@ export default function Home() {
             {caseStudies.map((project, index) => (
               <motion.article
                 key={project.name}
-                className="group grid gap-4 rounded-[32px] border border-hairline/70 bg-ink/50 p-6 transition-colors duration-150 hover:border-lavend"
+                className="group grid gap-4 rounded-[32px] border border-hairline/70 bg-ink/50 p-6 transition-colors duration-150 hover:border-lavender"
                 variants={cards}
                 initial="hidden"
                 whileInView="visible"
@@ -136,8 +141,8 @@ export default function Home() {
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed text-haze group-hover:text-foam">{project.description}</p>
-                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-lavend">
-                  <span className="h-px w-8 bg-lavend/70" />
+                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-lavender">
+                  <span className="h-px w-8 bg-lavender/70" />
                   Inquire for release notes
                 </div>
               </motion.article>

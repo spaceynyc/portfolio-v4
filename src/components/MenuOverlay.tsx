@@ -2,21 +2,26 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent } from "react";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const panelVariants = {
   closed: {
     clipPath: "inset(var(--mask-top, 50%) var(--mask-right, 50%) var(--mask-bottom, 50%) var(--mask-left, 50%) round var(--mask-radius, 24px))",
-    transition: { duration: 0.22, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: MotionDurations.transitionOut, ease: MotionEasings.tIn },
   },
   open: {
     clipPath: "inset(0% 0% 0% 0% round 0px)",
-    transition: { duration: 0.24, ease: [0.33, 1, 0.68, 1] },
+    transition: { duration: MotionDurations.transitionOut, ease: MotionEasings.tOut },
   },
 };
 
 const containerVariants = {
   hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: [0.4, 0, 0.2, 1] } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: MotionDurations.duration320, ease: MotionEasings.calm },
+  },
 };
 
 type NavTarget = "work" | "resume" | "about" | "contact";
@@ -100,7 +105,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
             className="fixed inset-0 z-40 flex items-stretch justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.15 } }}
+            exit={{ opacity: 0, transition: { duration: MotionDurations.duration160 } }}
           >
             <motion.div
               id="main-menu-overlay"
@@ -108,7 +113,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
               aria-modal="true"
               aria-label="Site navigation"
               style={{ ...maskStyle, ...backgroundStyle }}
-              className="relative flex h-full w-full items-center justify-center bg-lavend text-ink"
+              className="relative flex h-full w-full items-center justify-center bg-lavender text-ink"
               variants={panelVariants}
               initial="closed"
               animate="open"
@@ -119,7 +124,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
                 type="button"
                 data-cursor="hover"
                 onClick={onClose}
-                className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-xs font-medium uppercase tracking-[0.24em] text-ink transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavend"
+                className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-xs font-medium uppercase tracking-[0.24em] text-ink transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender"
                 whileHover={{ backgroundColor: "rgba(11, 11, 11, 0.08)" }}
                 whileTap={{ scale: 0.94 }}
               >
@@ -145,7 +150,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
                           }}
                           type="button"
                           data-cursor="hover"
-                          className="font-display text-5xl font-semibold tracking-tight text-ink transition-colors duration-150 hover:text-lavend-deep focus-visible:text-lavend-deep sm:text-6xl"
+                          className="font-display text-5xl font-semibold tracking-tight text-ink transition-colors duration-150 hover:text-lavender-deep focus-visible:text-lavender-deep sm:text-6xl"
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.97 }}
                           onClick={() => {

@@ -1,5 +1,6 @@
 ﻿import { useEffect, useMemo, useRef, useState, type PointerEvent } from "react";
 import { LayoutGroup, motion, useInView } from "framer-motion";
+import { MotionDurations, MotionEasings } from "../../styles/motion";
 
 type WorkCategory = "product-ui" | "motion-systems" | "prototyping";
 
@@ -135,7 +136,7 @@ const projects: WorkProject[] = [
   },
 ];
 
-const easing = [0.4, 0, 0.2, 1];
+const easing = MotionEasings.calm;
 const MAX_TILT = 6;
 
 export default function WorkCollection() {
@@ -167,13 +168,13 @@ export default function WorkCollection() {
                 key={filter.value}
                 type="button"
                 onClick={() => setActiveFilter(filter)}
-                className="relative overflow-hidden rounded-full border border-hairline/50 bg-ink/40 px-5 py-2 text-sm font-medium text-haze transition-all duration-200 hover:text-foam focus:outline-none focus-visible:ring-2 focus-visible:ring-lavend/60"
+                className="relative overflow-hidden rounded-full border border-hairline/50 bg-ink/40 px-5 py-2 text-sm font-medium text-haze transition-all duration-200 hover:text-foam focus:outline-none focus-visible:ring-2 focus-visible:ring-lavender/60"
                 data-cursor="hover"
               >
                 {isActive && (
                   <motion.span
                     layoutId="filter-pill"
-                    className="absolute inset-0 rounded-full bg-lavend/20"
+                    className="absolute inset-0 rounded-full bg-lavender/20"
                     transition={{ type: "spring", stiffness: 260, damping: 30 }}
                   />
                 )}
@@ -191,7 +192,7 @@ export default function WorkCollection() {
             layout
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.32, ease: easing, delay: index * 0.04 }}
+            transition={{ duration: MotionDurations.duration320, ease: easing, delay: index * 0.04 }}
             className="h-full"
           >
             <WorkCard project={project} />
@@ -294,7 +295,7 @@ function WorkCard({ project }: { project: WorkProject }) {
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-hairline/40 bg-ink/50 px-3 py-1 text-xs uppercase tracking-[0.28em] text-lavend"
+                className="rounded-full border border-hairline/40 bg-ink/50 px-3 py-1 text-xs uppercase tracking-[0.28em] text-lavender"
               >
                 {tag}
               </span>

@@ -2,6 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useCharCount } from "../hooks/useCharCount";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const EMAIL_PATTERN = /[^\s@]+@[^\s@]+\.[^\s@]+/;
 const MESSAGE_LIMIT = 500;
@@ -61,8 +62,8 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
   };
 
   const hintTone = useMemo(() => {
-    if (error) return "text-lavend-deep";
-    if (remaining < 50) return "text-lavend-deep";
+    if (error) return "text-lavender-deep";
+    if (remaining < 50) return "text-lavender-deep";
     return "text-haze";
   }, [error, remaining]);
 
@@ -81,7 +82,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
             className="fixed inset-0 z-30"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.15 } }}
+            exit={{ opacity: 0, transition: { duration: MotionDurations.duration160 } }}
           >
             <motion.div
               role="presentation"
@@ -89,7 +90,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
               onClick={onClose}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0, transition: { duration: 0.15 } }}
+              exit={{ opacity: 0, transition: { duration: MotionDurations.duration160 } }}
             />
             <motion.div
               ref={sheetRef}
@@ -99,8 +100,8 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
               className="absolute inset-x-0 bottom-0 mx-auto w-full max-w-3xl rounded-t-[32px] border border-hairline border-b-0 bg-ink/96 backdrop-blur-lg"
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
-              exit={{ y: "100%", transition: { duration: 0.2, ease: [0.4, 0, 0.2, 1] } }}
-              transition={{ duration: 0.24, ease: [0.33, 1, 0.68, 1] }}
+              exit={{ y: "100%", transition: { duration: MotionDurations.transitionIn, ease: MotionEasings.tIn } }}
+              transition={{ duration: MotionDurations.transitionOut, ease: MotionEasings.tOut }}
             >
               <div className="flex flex-col gap-6 px-6 pb-10 pt-8 sm:px-10">
                 <div className="flex items-start justify-between gap-4">
@@ -128,7 +129,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
                       required
-                      className="rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavend focus:outline-none focus:ring-2 focus:ring-lavend/40"
+                      className="rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavender focus:outline-none focus:ring-2 focus:ring-lavender/40"
                     />
                   </label>
                   <label className="flex flex-col gap-2 text-sm text-haze">
@@ -139,7 +140,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                       onChange={(event) => setMessage(event.target.value)}
                       maxLength={MESSAGE_LIMIT}
                       rows={5}
-                      className="scroll-area rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavend focus:outline-none focus:ring-2 focus:ring-lavend/40"
+                      className="scroll-area rounded-2xl border border-hairline bg-transparent px-4 py-3 text-base text-foam focus:border-lavender focus:outline-none focus:ring-2 focus:ring-lavender/40"
                     />
                   </label>
                   <div className="flex items-center justify-between text-xs">
@@ -151,7 +152,7 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                   <motion.button
                     type="submit"
                     data-cursor="hover"
-                    className="inline-flex items-center justify-center gap-2 rounded-full bg-lavend px-6 py-3 font-display text-sm uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+                    className="inline-flex items-center justify-center gap-2 rounded-full bg-lavender px-6 py-3 font-display text-sm uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
                   >
@@ -163,8 +164,11 @@ export function ContactDrawer({ open, onClose }: ContactDrawerProps) {
                         key="sent"
                         initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6, transition: { duration: 0.12 } }}
-                        className="rounded-full border border-lavend/50 bg-lavend/10 px-4 py-2 text-center text-xs text-lavend"
+                   <motion.div
+  exit={{ opacity: 0, y: -6, transition: { duration: MotionDurations.duration120 } }}
+  className="rounded-full border border-lavender/50 bg-lavender/10 px-4 py-2 text-center text-xs text-lavender"
+>
+
                       >
                         Sent (stub)
                       </motion.div>

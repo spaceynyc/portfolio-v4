@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import type { LayoutContext } from "../App";
+import { MotionDurations, MotionEasings } from "../styles/motion";
 
 const projects = [
   {
@@ -35,7 +36,11 @@ const listVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.05, duration: 0.26, ease: [0.4, 0, 0.2, 1] },
+    transition: {
+      delay: i * 0.05,
+      duration: MotionDurations.duration240,
+      ease: MotionEasings.calm,
+    },
   }),
 };
 
@@ -58,7 +63,7 @@ export default function Work() {
           <button
             type="button"
             onClick={openContact}
-            className="rounded-full bg-lavend px-5 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-ink transition-colors duration-150 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+            className="rounded-full bg-lavender px-5 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-ink transition-colors duration-150 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
           >
             Hire Me
           </button>
@@ -70,7 +75,7 @@ export default function Work() {
         {projects.map((project, index) => (
           <motion.article
             key={project.title}
-            className="rounded-[32px] border border-hairline/60 bg-ink/60 p-8 transition-colors duration-150 hover:border-lavend"
+            className="rounded-[32px] border border-hairline/60 bg-ink/60 p-8 transition-colors duration-150 hover:border-lavender"
             variants={listVariants}
             initial="hidden"
             whileInView="visible"
@@ -84,9 +89,9 @@ export default function Work() {
               </span>
             </div>
             <p className="mt-4 text-base leading-relaxed text-haze">{project.summary}</p>
-            <ul className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.28em] text-lavend">
+            <ul className="mt-6 flex flex-wrap gap-3 text-xs uppercase tracking-[0.28em] text-lavender">
               {project.focus.map((item) => (
-                <li key={item} className="rounded-full border border-lavend/40 px-3 py-1 text-lavend">
+                <li key={item} className="rounded-full border border-lavender/40 px-3 py-1 text-lavender">
                   {item}
                 </li>
               ))}

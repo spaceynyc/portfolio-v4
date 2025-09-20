@@ -8,10 +8,12 @@ import {
 import { useCallback, useMemo } from "react";
 import type { MouseEvent } from "react";
 import type { MotionValue } from "framer-motion";
+import { MotionDurations, MotionEasings, sumDurations } from "../styles/motion";
 
-const CALM_EASE = [0.32, 0.16, 0.16, 1] as const;
 const PARALLAX_LIMIT = 10;
 const SPRING_CONFIG = { stiffness: 180, damping: 26, mass: 0.8 };
+const CALM_STACK_DURATION = sumDurations(MotionDurations.duration320, MotionDurations.duration240);
+const EXTENDED_OUT_DURATION = sumDurations(MotionDurations.duration240, MotionDurations.duration240);
 
 const CAPABILITIES = [
   "Motion Systems",
@@ -30,8 +32,8 @@ const capabilityTileVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.52,
-      ease: CALM_EASE,
+      duration: CALM_STACK_DURATION,
+      ease: MotionEasings.calm,
       delay: index * 0.06,
     },
   }),
@@ -78,8 +80,8 @@ export function PortfolioHero() {
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.32 : 0.54,
-          ease: CALM_EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration320 : CALM_STACK_DURATION,
+          ease: MotionEasings.calm,
           when: "beforeChildren",
           staggerChildren: prefersReducedMotion ? 0 : 0.08,
         },
@@ -95,8 +97,8 @@ export function PortfolioHero() {
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.28 : 0.48,
-          ease: CALM_EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration320 : EXTENDED_OUT_DURATION,
+          ease: MotionEasings.calm,
         },
       },
     }),
@@ -110,8 +112,8 @@ export function PortfolioHero() {
         opacity: 1,
         y: 0,
         transition: {
-          duration: prefersReducedMotion ? 0.28 : 0.56,
-          ease: CALM_EASE,
+          duration: prefersReducedMotion ? MotionDurations.duration320 : CALM_STACK_DURATION,
+          ease: MotionEasings.calm,
         },
       },
     }),
@@ -172,10 +174,10 @@ export function PortfolioHero() {
           </motion.p>
           <motion.div className="flex flex-wrap items-center gap-3 text-sm text-haze" variants={identityItemVariants}>
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.28em] text-foam">
-              <span className="h-2 w-2 rounded-full bg-lavend" />
+              <span className="h-2 w-2 rounded-full bg-lavender" />
               Portland, OR
             </span>
-            <span className="inline-flex items-center gap-2 rounded-full border border-lavend/40 bg-lavend/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-lavend">
+            <span className="inline-flex items-center gap-2 rounded-full border border-lavender/40 bg-lavender/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-lavender">
               Open for Q3 collaborations
             </span>
           </motion.div>
@@ -183,14 +185,14 @@ export function PortfolioHero() {
             <a
               href="#work"
               aria-label="View selected work"
-              className="inline-flex items-center justify-center rounded-full bg-lavend px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink transition-colors duration-200 hover:bg-lavend-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="inline-flex items-center justify-center rounded-full bg-lavender px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-ink transition-colors duration-200 hover:bg-lavender-deep hover:text-foam focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               View Work
             </a>
             <a
-              href="/resume.pdf"
+              href="/resume"
               aria-label="Download Rowan Sato resume"
-              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-foam transition-colors duration-200 hover:border-lavend hover:text-lavend focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavend/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
+              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-foam transition-colors duration-200 hover:border-lavender hover:text-lavender focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink"
             >
               Download Resume
             </a>
