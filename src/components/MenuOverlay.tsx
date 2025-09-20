@@ -15,11 +15,11 @@ type MenuOverlayProps = {
 };
 
 const NAV_ITEMS: Array<{ id: NavTarget; label: string; href: string }> = [
-  { id: "home", label: "Home", href: "/" },
-  { id: "work", label: "Work", href: "/work" },
-  { id: "resume", label: "Résumé", href: "/resume" },
-  { id: "about", label: "About", href: "/about" },
-  { id: "contact", label: "Contact", href: "/contact" },
+  { id: "home", label: "home", href: "/" },
+  { id: "work", label: "work", href: "/work" },
+  { id: "resume", label: "résumé", href: "/resume" },
+  { id: "about", label: "about", href: "/about" },
+  { id: "contact", label: "contact", href: "/contact" },
 ];
 
 export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverlayProps) {
@@ -94,7 +94,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
                   type="button"
                   data-cursor="hover"
                   onClick={onClose}
-                  className="rounded-full border border-ink/20 px-3 py-1 text-xs uppercase tracking-[0.24em] text-ink transition-colors duration-150 hover:bg-lavender-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender"
+                  className="rounded-full border border-ink/20 px-3 py-1 text-xs tracking-[0.24em] text-ink transition-colors duration-150 hover:bg-lavender-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender"
                   whileTap={{ scale: 0.94 }}
                 >
                   Close
@@ -117,7 +117,7 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
                           }}
                           to={item.href}
                           onClick={(event) => handleLinkClick(event, item.id)}
-                          className="block rounded-2xl px-4 py-3 font-display text-2xl font-semibold uppercase tracking-[0.06em] text-ink transition-colors duration-150 hover:bg-lavender-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender sm:px-6 sm:py-4 sm:text-3xl"
+                          className="block rounded-2xl px-5 py-4 font-display font-extrabold lowercase leading-none text-ink text-4xl transition-colors duration-150 hover:bg-lavender-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/60 sm:py-5 sm:text-5xl md:py-6 md:text-6xl"
                           data-cursor="hover"
                         >
                           {item.label}
