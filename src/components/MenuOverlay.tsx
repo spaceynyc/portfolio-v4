@@ -1,30 +1,11 @@
-﻿import FocusTrap from "focus-trap-react";
+import FocusTrap from "focus-trap-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef } from "react";
-import type { CSSProperties, KeyboardEvent as ReactKeyboardEvent } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import type { CSSProperties, MouseEvent as ReactMouseEvent } from "react";
+import { NavLink } from "react-router-dom";
 import { MotionDurations, MotionEasings } from "../styles/motion";
 
-const panelVariants = {
-  closed: {
-    clipPath: "inset(var(--mask-top, 50%) var(--mask-right, 50%) var(--mask-bottom, 50%) var(--mask-left, 50%) round var(--mask-radius, 24px))",
-    transition: { duration: MotionDurations.transitionOut, ease: MotionEasings.tIn },
-  },
-  open: {
-    clipPath: "inset(0% 0% 0% 0% round 0px)",
-    transition: { duration: MotionDurations.transitionOut, ease: MotionEasings.tOut },
-  },
-};
-
-const containerVariants = {
-  hidden: { opacity: 0, y: 12 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: MotionDurations.duration320, ease: MotionEasings.calm },
-  },
-};
-
-type NavTarget = "work" | "resume" | "about" | "contact";
+type NavTarget = "home" | "work" | "resume" | "about" | "contact";
 
 type MenuOverlayProps = {
   open: boolean;
@@ -33,16 +14,27 @@ type MenuOverlayProps = {
   onNavigate: (target: NavTarget) => void;
 };
 
-const NAV_ITEMS: Array<{ id: NavTarget; label: string; description: string }> = [
-  { id: "work", label: "Work", description: "Selected case studies" },
-  { id: "resume", label: "Résumé", description: "Experience & skills" },
-  { id: "about", label: "About", description: "Studio background" },
-  { id: "contact", label: "Contact", description: "Start a collaboration" },
+const NAV_ITEMS: Array<{ id: NavTarget; label: string; href: string }> = [
+  { id: "home", label: "Home", href: "/" },
+  { id: "work", label: "Work", href: "/work" },
+  { id: "resume", label: "Résumé", href: "/resume" },
+  { id: "about", label: "About", href: "/about" },
+  { id: "contact", label: "Contact", href: "/contact" },
 ];
 
 export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverlayProps) {
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const itemRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const itemRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    } else if (previouslyFocusedRef.current) {
+      previouslyFocusedRef.current.focus();
+      previouslyFocusedRef.current = null;
+    }
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -56,37 +48,20 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
     return () => window.removeEventListener("keydown", onKey);
   }, [open, onClose]);
 
-  const handleArrowNavigation = useCallback((event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if (!["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(event.key)) {
-      return;
-    }
-
-    const focusable = itemRefs.current.filter((ref): ref is HTMLButtonElement => Boolean(ref));
-    if (focusable.length === 0) {
-      return;
-    }
-
-    event.preventDefault();
-
-    const currentIndex = focusable.findIndex((element) => element === document.activeElement);
-    const direction = event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 1;
-    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + direction + focusable.length) % focusable.length;
-
-    focusable[nextIndex].focus();
-  }, []);
-
   const trapInitialFocus = useCallback(() => {
-    const firstButton = itemRefs.current.find((ref): ref is HTMLButtonElement => Boolean(ref));
-    return firstButton ?? closeButtonRef.current ?? document.body;
+    const firstLink = itemRefs.current.find((ref): ref is HTMLAnchorElement => Boolean(ref));
+    return firstLink ?? closeButtonRef.current ?? document.body;
   }, []);
 
   const trapFallbackFocus = useCallback(() => closeButtonRef.current ?? document.body, []);
 
-  const backgroundStyle = useMemo(
-    () => ({
-      background: "radial-gradient(140% 100% at 50% 40%, rgba(255,255,255,0.22), rgba(255,255,255,0.06) 45%, rgba(182,156,255,0.08) 80%)",
-    }),
-    []
+  const handleLinkClick = useCallback(
+    (event: ReactMouseEvent<HTMLAnchorElement>, target: NavTarget) => {
+      event.preventDefault();
+      onNavigate(target);
+      onClose();
+    },
+    [onClose, onNavigate]
   );
 
   return (
@@ -100,79 +75,62 @@ export function MenuOverlay({ open, maskStyle, onClose, onNavigate }: MenuOverla
             escapeDeactivates: false,
           }}
         >
-          <motion.div
+          <motion.nav
             key="overlay"
-            className="fixed inset-0 z-40 flex items-stretch justify-center"
+            id="main-menu-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation"
+            style={maskStyle}
+            className="fixed inset-0 z-50 bg-lavender text-ink"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: MotionDurations.duration160 } }}
+            animate={{ opacity: 1, transition: { duration: MotionDurations.duration160, ease: MotionEasings.calm } }}
+            exit={{ opacity: 0, transition: { duration: MotionDurations.duration160, ease: MotionEasings.calm } }}
           >
-            <motion.div
-              id="main-menu-overlay"
-              role="dialog"
-              aria-modal="true"
-              aria-label="Site navigation"
-              style={{ ...maskStyle, ...backgroundStyle }}
-              className="relative flex h-full w-full items-center justify-center bg-lavend text-ink"
-              variants={panelVariants}
-              initial="closed"
-              animate="open"
-              exit="closed"
-            >
-              <motion.button
-                ref={closeButtonRef}
-                type="button"
-                data-cursor="hover"
-                onClick={onClose}
-                className="absolute right-6 top-6 flex h-11 w-11 items-center justify-center rounded-full border border-ink/20 text-xs font-medium uppercase tracking-[0.24em] text-ink transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavend"
-                whileHover={{ backgroundColor: "rgba(11, 11, 11, 0.08)" }}
-                whileTap={{ scale: 0.94 }}
-              >
-                Close
-              </motion.button>
+            <div className="mx-auto flex h-full max-w-3xl flex-col justify-between px-6 py-8 sm:px-10">
+              <div className="flex items-center justify-end">
+                <motion.button
+                  ref={closeButtonRef}
+                  type="button"
+                  data-cursor="hover"
+                  onClick={onClose}
+                  className="rounded-full border border-ink/20 px-3 py-1 text-xs uppercase tracking-[0.24em] text-ink transition-colors duration-150 hover:bg-lavender-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender"
+                  whileTap={{ scale: 0.94 }}
+                >
+                  Close
+                </motion.button>
+              </div>
 
               <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-                className="flex w-full max-w-3xl flex-col items-center gap-10 px-6 py-16 text-center sm:px-10"
-                onKeyDown={handleArrowNavigation}
+                className="flex flex-1 flex-col justify-center"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: MotionDurations.duration240, ease: MotionEasings.calm } }}
+                exit={{ opacity: 0, y: 6, transition: { duration: MotionDurations.duration160, ease: MotionEasings.calm } }}
               >
-                <p className="text-xs uppercase tracking-[0.32em] text-ink/60">Navigate</p>
-                <nav aria-label="Primary overlay">
-                  <ul className="flex flex-col items-center gap-8">
+                <nav aria-label="Primary overlay navigation">
+                  <ul className="flex flex-col gap-2 sm:gap-3">
                     {NAV_ITEMS.map((item, index) => (
-                      <li key={item.id} className="flex flex-col items-center gap-2">
-                        <motion.button
+                      <li key={item.id}>
+                        <NavLink
                           ref={(element) => {
                             itemRefs.current[index] = element;
                           }}
-                          type="button"
+                          to={item.href}
+                          onClick={(event) => handleLinkClick(event, item.id)}
+                          className="block rounded-2xl px-4 py-3 font-display text-2xl font-semibold uppercase tracking-[0.06em] text-ink transition-colors duration-150 hover:bg-lavender-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 focus-visible:ring-offset-2 focus-visible:ring-offset-lavender sm:px-6 sm:py-4 sm:text-3xl"
                           data-cursor="hover"
-                          className="font-display text-5xl font-semibold tracking-tight text-ink transition-colors duration-150 hover:text-lavend-deep focus-visible:text-lavend-deep sm:text-6xl"
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.97 }}
-                          onClick={() => {
-                            onNavigate(item.id);
-                            onClose();
-                          }}
                         >
                           {item.label}
-                        </motion.button>
-                        <span className="text-sm uppercase tracking-[0.28em] text-ink/60">
-                          {item.description}
-                        </span>
+                        </NavLink>
                       </li>
                     ))}
                   </ul>
                 </nav>
-                <p className="max-w-xl text-sm leading-relaxed text-ink/70">
-                  Motion-first human interfaces for founders and teams shipping products that deserve a calmer sense of speed.
-                </p>
               </motion.div>
-            </motion.div>
-          </motion.div>
+
+              <div aria-hidden="true" />
+            </div>
+          </motion.nav>
         </FocusTrap>
       ) : null}
     </AnimatePresence>

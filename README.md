@@ -8,7 +8,7 @@ AetherLab is a high-contrast, motion-driven single-page experience built with Re
 - Tailwind CSS (with extended palette & typography)
 - Framer Motion for interface transitions
 - p5.js for the glow-grid background sketch
-- React Router for `/` and `/about` routes
+- React Router for `/`, `/work`, `/resume`, `/about`, and `/contact` routes
 
 ## Getting Started
 
@@ -49,7 +49,7 @@ npm run preview
 
 ### Twinkling Algorithm
 
-- 400–600 stars spawn per viewport with randomized size (0.5–2.5px), base brightness (120–200), phase, and twinkle speed (0.5–1.5x).
+- 400â€“600 stars spawn per viewport with randomized size (0.5â€“2.5px), base brightness (120â€“200), phase, and twinkle speed (0.5â€“1.5x).
 - Brightness follows `base + sin(frameCount * 0.02 * twinkleSpeed + phase) * 55`, mapped to the lavender alpha channel for a soft glow.
 - Mouse-relative parallax nudges each star a few pixels from the canvas center while the frame rate is capped at 45 FPS for stability.
 

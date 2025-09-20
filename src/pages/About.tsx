@@ -48,7 +48,7 @@ export default function About() {
             type="button"
             data-cursor="hover"
             onClick={openContact}
-            className="mt-4 inline-flex items-center justify-center rounded-full bg-lavend px-5 py-3 font-display text-xs uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavend-deep hover:text-foam"
+            className="mt-4 inline-flex items-center justify-center rounded-full bg-lavender px-5 py-3 font-display text-xs uppercase tracking-[0.3em] text-ink transition-colors duration-150 hover:bg-lavender-deep hover:text-foam"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
           >
