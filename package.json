@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite --host --port 5173",
-    "build": "tsc && vite build",
+    "build": "node ./node_modules/typescript/bin/tsc && vite build",
     "preview": "vite preview --host --port 5173",
     "serve:static": "npx serve -s dist -l 5173",
     "test": "vitest"
